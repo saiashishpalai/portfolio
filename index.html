@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Ashish Palai | Product Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --border-color: #2a2a2a;
+            --accent: #ffffff;
+            --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --bg-tertiary: #ebebeb;
+            --text-primary: #0a0a0a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #888888;
+            --border-color: #e0e0e0;
+            --accent: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Syne', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color var(--transition), color var(--transition);
+            overflow-x: hidden;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-primary);
+            transition: all var(--transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            border-color: var(--text-secondary);
+        }
+
+        .theme-toggle svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.5s ease;
+        }
+
+        .theme-toggle:hover svg {
+            transform: rotate(180deg);
+        }
+
+        .sun-icon, .moon-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .moon-icon {
+            display: block;
+        }
+
+        [data-theme="light"] .sun-icon {
+            display: block;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 1000;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color var(--transition);
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--text-primary);
+            transition: width var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--text-primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--text-muted);
+        }
+
+        .hero h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 span {
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .hero-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity var(--transition);
+        }
+
+        .hero-links a:hover {
+            opacity: 0.6;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 4rem;
+            left: 4rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .scroll-line {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--text-muted), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .section-title {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+        }
+
+        /* Experience */
+        .experience-grid {
+            display: grid;
+            gap: 0;
+        }
+
+        .experience-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 4rem;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color var(--transition);
+        }
+
+        .experience-item:hover {
+            background-color: var(--bg-secondary);
+            margin: 0 -2rem;
+            padding: 3rem 2rem;
+        }
+
+        .experience-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .experience-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-content h4 {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-content ul {
+            list-style: none;
+        }
+
+        .experience-content li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .experience-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--text-muted);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--text-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform var(--transition);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--text-secondary);
+        }
+
+        .project-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+        }
+
+        .skills-category h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            transition: all var(--transition);
+        }
+
+        .skill-tag:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        /* Education & Certifications */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-item {
+            padding: 2rem;
+            border-left: 2px solid var(--border-color);
+            transition: border-color var(--transition);
+        }
+
+        .education-item:hover {
+            border-color: var(--text-primary);
+        }
+
+        .education-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item h4 {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Contact */
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 4rem;
+        }
+
+        .contact-text {
+            max-width: 500px;
+        }
+
+        .contact-text h2 {
+            font-family: 'Instrument Serif', serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-text p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity var(--transition);
+        }
+
+        .contact-link:hover {
+            opacity: 0.6;
+        }
+
+        .resume-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            transition: all var(--transition);
+            margin-top: 1rem;
+        }
+
+        .resume-download:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border-color: var(--text-primary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 4rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        footer p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 2rem;
+            }
+
+            section {
+                padding: 4rem 2rem;
+            }
+
+            .experience-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .experience-item:hover {
+                margin: 0 -1rem;
+                padding: 2rem 1rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-content {
+                flex-direction: column;
+            }
+
+            footer {
+                padding: 2rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .theme-toggle {
+                top: 1rem;
+                right: 1rem;
+            }
+
+            .scroll-indicator {
+                left: 2rem;
+                bottom: 2rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <span class="theme-text">Theme</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-label fade-in">Product Manager • Bangalore, India</p>
+            <h1 class="fade-in delay-1">Sai Ashish <span>Palai</span></h1>
+            <p class="hero-description fade-in delay-2">
+                Associate Product Manager at Convin.ai, building AI-native products that scale. 
+                Previously Product Engineer at Publicis Sapient. Passionate about transforming 
+                complex problems into elegant solutions.
+            </p>
+            <div class="hero-links fade-in delay-3">
+                <a href="https://linkedin.com/in/saiashishpalai" target="_blank">
+                    <span>↗</span> LinkedIn
+                </a>
+                <a href="https://github.com/saiashishpalai" target="_blank">
+                    <span>↗</span> GitHub
+                </a>
+                <a href="mailto:saiashishpalai74@gmail.com">
+                    <span>↗</span> Email
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator fade-in delay-4">
+            <div class="scroll-line"></div>
+            Scroll to explore
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-header">
+            <span class="section-number">01</span>
+            <h2 class="section-title">Experience</h2>
+        </div>
+        <div class="experience-grid">
+            <article class="experience-item">
+                <div class="experience-date">Aug 2024 — Present</div>
+                <div class="experience-content">
+                    <h3>Associate Product Manager</h3>
+                    <h4>Convin • Bengaluru, India</h4>
+                    <ul>
+                        <li>Owned end-to-end development of Convin.ai's flagship Auto QA from client problem discovery to solution design, driving adoption gains that positioned Convin among India's Top 6 Startups (2025) by LinkedIn.</li>
+                        <li>Restructured Auto QA from Python to a scalable no-code node based product (Rule Engine), cutting GTM time by 48% and boosting adoption by 60%; product now powers 80+ enterprise clients.</li>
+                        <li>Built automations using n8n to resolve recurring support issues; reduced incoming support tickets by 40%, improving product stability and boosting CSAT.</li>
+                    </ul>
+                </div>
+            </article>
+            <article class="experience-item">
+                <div class="experience-date">Jan 2022 — Aug 2024</div>
+                <div class="experience-content">
+                    <h3>Product Engineer L1</h3>
+                    <h4>Publicis Sapient • Bengaluru, India</h4>
+                    <ul>
+                        <li>Built and maintained internal React project for 1 year; later led Accessibility team as Scrum Master, driving Agile delivery to achieve 95% WCAG Level AA compliance.</li>
+                        <li>Junior Product Owner for Stellantis Free2Move; coordinated B2C web app design with Accenture and ensured on-time delivery for high-end European EV customers.</li>
+                    </ul>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <span class="section-number">02</span>
+            <h2 class="section-title">Projects</h2>
+        </div>
+        <div class="projects-grid">
+            <article class="project-card">
+                <p class="project-date">Sep 2025 — Present</p>
+                <h3>Haven7</h3>
+                <p>
+                    Built an AI-native productivity platform for PMs from scratch. Architected AI Search 
+                    (semantic search with vector embeddings across Slack/Drive/Notion), PRD Studio 
+                    (structured requirement generation), and Spec Vision (multimodal wireframe-to-spec conversion). 
+                    Scaled from 0→80 MAU in a month.
+                </p>
+                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                    <a href="https://github.com/saiashishpalai/source-searcher-pro" target="_blank" class="project-link">View on GitHub ↗</a>
+                    <a href="https://source-searcher-pro.vercel.app/" target="_blank" class="project-link">Try Product ↗</a>
+                </div>
+            </article>
+            <article class="project-card">
+                <p class="project-date">Co-Founder</p>
+                <h3>Zarliss</h3>
+                <p>
+                    Co-founded a drop-servicing startup delivering projects for clients in India and the UK. 
+                    Oversaw the end-to-end product lifecycle from design finalization to app delivery, 
+                    ensuring quality and timely execution.
+                </p>
+                <!-- <a href="#" class="project-link">Learn more ↗</a> -->
+            </article>
+            <article class="project-card">
+                <p class="project-date">July 2020</p>
+                <h3>7krinet0 - Content Internship</h3>
+                <p>
+                    Authored 200+ articles on Web3, Tech, and Geopolitics, focusing on keyword research, 
+                    improving CTR by 4%. Drove 3x organic traffic growth through data-driven content 
+                    strategies and high-impact SEO campaigns.
+                </p>
+                <a href="https://ulaska.com/author/saiashish/" target="_blank" class="project-link">Read articles ↗</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <span class="section-number">03</span>
+            <h2 class="section-title">Skills & Tools</h2>
+        </div>
+        <div class="skills-container">
+            <div class="skills-category">
+                <h3>Technologies</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Express.js</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">pgvector</span>
+                    <span class="skill-tag">OpenAI API</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">OAuth 2.0</span>
+                </div>
+            </div>
+            <div class="skills-category">
+                <h3>Tools & Platforms</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">Git/GitHub</span>
+                    <span class="skill-tag">Supabase</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">Confluence</span>
+                    <span class="skill-tag">Postman</span>
+                    <span class="skill-tag">n8n</span>
+                    <span class="skill-tag">Retool</span>
+                    <span class="skill-tag">PostHog</span>
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Vercel</span>
+                    <span class="skill-tag">Cursor</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-header">
+            <span class="section-number">04</span>
+            <h2 class="section-title">Education & Certifications</h2>
+        </div>
+        <div class="education-grid">
+            <article class="education-item">
+                <h3>B.Tech in Computer Science</h3>
+                <h4>Chandigarh University</h4>
+                <p>June 2018 — June 2022</p>
+            </article>
+            <article class="education-item">
+                <h3>Product Management Fellowship</h3>
+                <h4>Nextleap</h4>
+                <p>Sep 2024 • 16-week intensive program</p>
+            </article>
+            <article class="education-item">
+                <h3>Full Stack Development</h3>
+                <h4>IIT Kanpur</h4>
+                <p>July 2020 • Top 10% of cohort</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-content">
+            <div class="contact-text">
+                <h2>Let's build something <span style="font-style: italic;">meaningful</span> together.</h2>
+                <p>I'm always open to discussing product roles, interesting projects, or opportunities to collaborate.</p>
+            </div>
+            <div class="contact-links">
+                <a href="mailto:saiashishpalai74@gmail.com" class="contact-link">
+                    <span>↗</span> Email
+                </a>
+                <a href="https://linkedin.com/in/saiashishpalai" target="_blank" class="contact-link">
+                    <span>↗</span> LinkedIn
+                </a>
+                <a href="https://github.com/saiashishpalai" target="_blank" class="contact-link">
+                    <span>↗</span> GitHub
+                </a>
+                <a href="Sai Ashish_Resume_Nov2025_Updated.pdf" download="Sai_Ashish_Resume.pdf" class="resume-download">
+                    <span>↓</span> Download Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Sai Ashish Palai. All rights reserved.</p>
+        <p>Designed & Built with ♥</p>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section:not(.hero)').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
+
