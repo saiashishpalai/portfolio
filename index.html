@@ -53,6 +53,34 @@
             overflow-x: hidden;
         }
 
+        /* Site Header */
+        .site-header {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+        }
+
+        .site-logo {
+            height: 45px;
+            width: auto;
+            border-radius: 8px;
+            transition: transform var(--transition);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .logo-link:hover .site-logo {
+            transform: scale(1.05);
+        }
+
         /* Theme Toggle */
         .theme-toggle {
             position: fixed;
@@ -103,10 +131,6 @@
 
         /* Navigation */
         nav {
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 1000;
             display: flex;
             gap: 2rem;
         }
@@ -613,6 +637,16 @@
                 right: 1rem;
             }
 
+            .site-header {
+                top: 1rem;
+                left: 1rem;
+                gap: 1rem;
+            }
+
+            .site-logo {
+                height: 36px;
+            }
+
             .scroll-indicator {
                 left: 2rem;
                 bottom: 2rem;
@@ -652,13 +686,18 @@
         <span class="theme-text">Theme</span>
     </button>
 
-    <!-- Navigation -->
-    <nav>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <!-- Site Header -->
+    <header class="site-header">
+        <a href="#" class="logo-link">
+            <img src="Sai Ashish Palai Logo 2.jpg" alt="Sai Ashish Palai Logo" class="site-logo">
+        </a>
+        <nav>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
