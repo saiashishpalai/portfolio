@@ -1,0 +1,2 @@
+# GA4 measurement ID (portfolio site). Also embedded in index.html gtag config.
+G-9GHLLDE47J
