@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official portfolio of Sai Ashish Palai – Founder of Palai Global Exports and Sthvara. Global exporter of premium GVT tiles based in Morbi, Gujarat.">
-    <meta name="keywords" content="Sai Ashish Palai, Palai Global Exports, Sthvara, Tiles Exporter, Morbi Tiles, GVT Tiles India">
-    <title>Sai Ashish Palai | Founder & Exporter</title>
+    <meta name="description" content="Sai Ashish Palai — Founder of Palai Global Exports, ex-APM at Convin.ai. Built two export brands and the AI-powered B2B software to run them. Understands both sides of the table: product and commercial.">
+    <meta name="keywords" content="Sai Ashish Palai, Palai Global Exports, Sthvara, Solutions Consultant, AI Product Manager, B2B Outreach, Export Tech, Gemini Pro, Supabase">
+    <title>Sai Ashish Palai | Founder, Builder &amp; B2B Operator</title>
     <link rel="icon" type="image/jpeg" href="favicon.jpg">
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9GHLLDE47J"></script>
@@ -223,8 +223,9 @@
         .hero-description {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 700px;
             margin-bottom: 2rem;
+            line-height: 1.5;
         }
 
         .hero-quote {
@@ -387,6 +388,11 @@
             overflow: hidden;
         }
 
+        .project-card.featured {
+            grid-column: 1 / -1;
+            border-left: 3px solid var(--text-primary);
+        }
+
         .project-card::before {
             content: '';
             position: absolute;
@@ -441,10 +447,72 @@
             text-decoration: underline;
         }
 
+        .project-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .module-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 0.6rem;
+            margin: 1.25rem 0;
+        }
+
+        .module-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        .module-item::before {
+            content: '→';
+            color: var(--text-muted);
+        }
+
+        .tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+        }
+
+        .tech-pill {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            padding: 0.2rem 0.6rem;
+        }
+
+        .founder-quote {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin: 1.25rem 0 0;
+            padding-left: 1.25rem;
+            border-left: 1px solid var(--border-color);
+            line-height: 1.8;
+        }
+
         /* Skills */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 4rem;
         }
 
@@ -703,6 +771,7 @@
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
+            <a href="#education">Education</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
@@ -713,8 +782,7 @@
             <p class="hero-label fade-in">Founder & Exporter • Morbi / Bengaluru, India</p>
             <h1 class="fade-in delay-1">Sai Ashish <span>Palai</span></h1>
             <p class="hero-description fade-in delay-2">
-                Founder of Palai Global Exports, building Sthvara – a premium tile brand globalizing Indian craftsmanship. 
-                Previously an Associate Product Manager at Convin.ai and Product Engineer at Publicis Sapient. A curious generalist driven by learning treating skills as life investments, not just work.
+                Founder of Palai Global Exports. I bridge the gap between technical execution and commercial growth by building AI-native tools to solve real-world trade friction. Ex-APM at Convin.ai; I architect software to automate lead generation, supply chain intelligence, and international sales.
             </p>
             <blockquote class="hero-quote fade-in delay-2">
                 "The meaning of life is to find your gift.<br>
@@ -749,16 +817,13 @@
                 <div class="experience-date">Feb 2026 — Present</div>
                 <div class="experience-content">
                     <h3>Founder</h3>
-                    <h4>Palai Global Exports (An export house) • Morbi, Gujarat</h4>
+                    <h4>Palai Global Exports & Sthvara • Morbi, Gujarat</h4>
                     <ul>
                         <li>
-                            <strong>Building Sthvara</strong> — A flagship brand that exports GVT (Glazed Vitrified Tiles) to global markets. Built from the ground up with institutional systems, formal SOPs, and operational rigour from day one.
+                            <strong>Scaling Sthvara Ceramics</strong> — Direct-to-market exporter of premium GVT tiles. Managing end-to-end operations: factory partnerships, logistics, customs compliance (APEDA/IEC), and international market penetration in Russia and the Middle East.
                         </li>
                         <li>
-                            <strong>Building Kalinga Foods</strong> — Taking Odisha's rice to global markets.
-                        </li>
-                        <li>
-                            <strong>Building Palai Global Exports</strong> — A merchant export trading house based in Morbi, Gujarat, the world's largest ceramic tile manufacturing hub.
+                            <strong>Scaling Kalinga Foods</strong> — Leading agricultural trade operations. Built supplier network from FCI to rice mill level, ensuring end-to-end product traceability and quality compliance for global wholesale clients.
                         </li>
                     </ul>
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
@@ -777,9 +842,9 @@
                     <h3>Associate Product Manager</h3>
                     <h4>Convin • Bengaluru, India</h4>
                     <ul>
-                        <li>Owned end-to-end development of Convin.ai's flagship Auto QA from client problem discovery to solution design, driving adoption gains that positioned Convin among India's Top 6 Startups (2025) by LinkedIn.</li>
-                        <li>Restructured Auto QA from Python to a scalable no-code node based product (Rule Engine), cutting GTM time by 48% and boosting adoption by 60%; product now powers 80+ enterprise clients.</li>
-                        <li>Built automations using n8n to resolve recurring support issues; reduced incoming support tickets by 40%, improving product stability and boosting CSAT.</li>
+                        <li>Owned end-to-end development of Convin.ai's flagship Auto QA. Drove adoption gains positioning Convin among LinkedIn's Top 6 Startups (2025).</li>
+                        <li>Restructured Auto QA from Python scripts to a no-code Rule Engine; cut GTM time by 48% and scaled functionality to 80+ enterprise clients.</li>
+                        <li>Automated support resolution workflows with n8n, reducing ticket volume by 40%.</li>
                     </ul>
                 </div>
             </article>
@@ -789,8 +854,8 @@
                     <h3>Product Engineer L1</h3>
                     <h4>Publicis Sapient • Bengaluru, India</h4>
                     <ul>
-                        <li>Built and maintained internal React project for 1 year; later led Accessibility team as Scrum Master, driving Agile delivery to achieve 95% WCAG Level AA compliance.</li>
-                        <li>Junior Product Owner for Stellantis Free2Move; coordinated B2C web app design with Accenture and ensured on-time delivery for high-end European EV customers.</li>
+                        <li>Led accessibility scrum for high-traffic enterprise web platforms, achieving 95% WCAG 2.1 Level AA compliance.</li>
+                        <li>Coordinated cross-functional product design for Stellantis Free2Move, ensuring seamless delivery for European electric vehicle web interfaces.</li>
                     </ul>
                 </div>
             </article>
@@ -804,14 +869,36 @@
             <h2 class="section-title">Projects</h2>
         </div>
         <div class="projects-grid">
+            <article class="project-card featured">
+                <span class="project-badge">⚡ Flagship Build</span>
+                <p class="project-date">Feb 2026 — Present</p>
+                <h3>Palai Outreach OS</h3>
+                <p>
+                    A bespoke AI-native B2B platform designed for high-velocity international trade. Integrated Gemini Pro and Perplexity API to turn raw global market data into enriched leads. Custom-built Supabase backend handles stateful email tracking and reply classification.
+                </p>
+                <div class="module-list">
+                    <span class="module-item">Lead Ingestion</span>
+                    <span class="module-item">AI Enrichment</span>
+                    <span class="module-item">Sequence Writer</span>
+                    <span class="module-item">Email Tracking</span>
+                    <span class="module-item">Reply Classifier</span>
+                    <span class="module-item">Pipeline Dashboard</span>
+                </div>
+                <p class="founder-quote">"Infrastructure is the barrier to trade. By building the software to run my own companies, I've created the moat that allows for sustainable global scaling."</p>
+                <div class="tech-pills">
+                    <span class="tech-pill">Gemini Pro</span>
+                    <span class="tech-pill">Perplexity API</span>
+                    <span class="tech-pill">Supabase</span>
+                    <span class="tech-pill">PostgreSQL</span>
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">Custom SQL</span>
+                </div>
+            </article>
             <article class="project-card">
                 <p class="project-date">Sep 2025 — Present</p>
                 <h3>Haven7</h3>
                 <p>
-                    Built an AI-native productivity platform for PMs from scratch. Architected AI Search 
-                    (semantic search with vector embeddings across Slack/Drive/Notion), PRD Studio 
-                    (structured requirement generation), and Spec Vision (multimodal wireframe-to-spec conversion). 
-                    Scaled from 0→80 MAU in a month.
+                    AI-native productivity tool for PMs. Architected vector-based semantic search across internal docs and automated PRD generation workflows. 
                 </p>
                 <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
                     <a href="https://github.com/saiashishpalai/source-searcher-pro" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -822,21 +909,8 @@
                 <p class="project-date">Co-Founder</p>
                 <h3>Zarliss</h3>
                 <p>
-                    Co-founded a drop-servicing startup delivering projects for clients in India and the UK. 
-                    Oversaw the end-to-end product lifecycle from design finalization to app delivery, 
-                    ensuring quality and timely execution.
+                    Drop-servicing startup connecting global client requests with specialized project delivery teams. Optimized lifecycle from design to delivery.
                 </p>
-                <!-- <a href="#" class="project-link">Learn more ↗</a> -->
-            </article>
-            <article class="project-card">
-                <p class="project-date">July 2020</p>
-                <h3>7krinet0 - Content Internship</h3>
-                <p>
-                    Authored 200+ articles on Web3, Tech, and Geopolitics, focusing on keyword research, 
-                    improving CTR by 4%. Drove 3x organic traffic growth through data-driven content 
-                    strategies and high-impact SEO campaigns.
-                </p>
-                <a href="https://ulaska.com/author/saiashish/" target="_blank" class="project-link">Read articles ↗</a>
             </article>
         </div>
     </section>
@@ -855,32 +929,42 @@
                     <span class="skill-tag">TypeScript</span>
                     <span class="skill-tag">React.js</span>
                     <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">Express.js</span>
                     <span class="skill-tag">Python</span>
                     <span class="skill-tag">SQL</span>
                     <span class="skill-tag">PostgreSQL</span>
-                    <span class="skill-tag">HTML/CSS</span>
                     <span class="skill-tag">pgvector</span>
                     <span class="skill-tag">OpenAI API</span>
                     <span class="skill-tag">REST APIs</span>
-                    <span class="skill-tag">OAuth 2.0</span>
                 </div>
             </div>
             <div class="skills-category">
                 <h3>Tools & Platforms</h3>
                 <div class="skills-list">
-                    <span class="skill-tag">Git/GitHub</span>
                     <span class="skill-tag">Supabase</span>
+                    <span class="skill-tag">Git/GitHub</span>
+                    <span class="skill-tag">n8n</span>
+                    <span class="skill-tag">Gemini Pro API</span>
+                    <span class="skill-tag">Perplexity API</span>
+                    <span class="skill-tag">Cursor</span>
+                    <span class="skill-tag">PostHog</span>
                     <span class="skill-tag">Figma</span>
                     <span class="skill-tag">Jira</span>
-                    <span class="skill-tag">Confluence</span>
-                    <span class="skill-tag">Postman</span>
-                    <span class="skill-tag">n8n</span>
-                    <span class="skill-tag">Retool</span>
-                    <span class="skill-tag">PostHog</span>
-                    <span class="skill-tag">Tableau</span>
                     <span class="skill-tag">Vercel</span>
-                    <span class="skill-tag">Cursor</span>
+                </div>
+            </div>
+            <div class="skills-category">
+                <h3>Sales & GTM</h3>
+                <div class="skills-list">
+                    <span class="skill-tag">B2B Cold Outreach</span>
+                    <span class="skill-tag">Lead Enrichment</span>
+                    <span class="skill-tag">Pipeline Management</span>
+                    <span class="skill-tag">AI Personalization</span>
+                    <span class="skill-tag">Cold Email Sequences</span>
+                    <span class="skill-tag">Reply Classification</span>
+                    <span class="skill-tag">CIF/FOB Pricing</span>
+                    <span class="skill-tag">International Trade</span>
+                    <span class="skill-tag">Proforma Invoicing</span>
+                    <span class="skill-tag">Sales Enablement</span>
                 </div>
             </div>
         </div>
